@@ -14,7 +14,7 @@ APKSIGNER=$BUILD_TOOLS_PATH"/apksigner" # /!\ version 26
 PLATFORM=$PLATFORM_PATH"/android.jar"
 SDKMANAGER=$TOOLS_PATH"/bin/sdkmanager"
 
-KEY=$ANDROID_SDK_PATH"/lidj.keystore"
+KEY=$ANDROID_SDK_PATH"/mykey.keystore"
 ADB=$ANDROID_SDK_PATH"/platform-tools/adb"
 
 function build(){
@@ -66,12 +66,13 @@ function tool(){
         unzip sdk-tools-linux-3859397.zip -d $ANDROID_SDK_PATH
         rm -rf sdk-tools-linux-3859397.zip
         sudo chmod -R 777 $ANDROID_SDK_PATH
+
+        #install sdk build-tools platform
+        echo "> install sdk build-tools platform...."
+        $SDKMANAGER "platform-tools" "platforms;android-19"
+        $SDKMANAGER "platform-tools" "build-tools;26.0.1" 
     fi
 
-    #install sdk build-tools platform
-    echo "> install sdk build-tools platform...."
-    $SDKMANAGER "platform-tools" "platforms;android-19"
-    $SDKMANAGER "platform-tools" "build-tools;26.0.1" 
     $SDKMANAGER --list
 
     if [ ! -e $KEY ]; then 

@@ -1,0 +1,14 @@
+TEST on MAC  
+
+If it is the first time to compile, It is recommended to run make tool to download platform、SDK、build-tools etc.  
+$ make tool  
+  
+Build the project:  
+$ make build  
+  
+Install the APP:  
+$ make program  
+  
+
+https://github.com/nbtool/android_app_linux_tool  
+https://www.cnblogs.com/zjutlitao/p/9672376.html  
